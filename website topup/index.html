@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOPAU STORE</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;font-family:'Orbitron',sans-serif;
+  background:radial-gradient(circle at top,#0a0f2c,#020617);color:#fff
+}
+header{
+  background:linear-gradient(90deg,#ffd700,#ffb700);
+  padding:14px;text-align:center;
+  box-shadow:0 0 25px rgba(255,215,0,.8)
+}
+.logo{
+  margin:0;font-size:20px;letter-spacing:3px;color:#2b1f00;
+  text-shadow:0 0 5px #ffd700,0 0 10px #ffcc00,0 0 25px #ffb700;
+  animation:goldPulse 1.8s infinite alternate,slideIn 1s ease-out
+}
+@keyframes goldPulse{
+  from{text-shadow:0 0 5px #ffd700,0 0 10px #ffcc00,0 0 25px #ffb700}
+  to{text-shadow:0 0 10px #ffd700,0 0 25px #ffcc00,0 0 60px #ffb700}
+}
+@keyframes slideIn{from{transform:translateY(-20px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+.container{padding:16px;padding-bottom:90px}
+h3{color:#ffd700;text-shadow:0 0 8px #ffd700}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+
+.card{
+  height:110px;border-radius:16px;background-size:cover;background-position:center;
+  display:flex;align-items:flex-end;justify-content:center;cursor:pointer;
+  position:relative;overflow:hidden;border:1px solid #ffd700;
+  box-shadow:0 0 12px rgba(255,215,0,.7);transition:.2s
+}
+.card:hover{transform:scale(1.05);box-shadow:0 0 25px #ffd700}
+.card::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),rgba(0,0,0,.1))}
+.card p{position:relative;font-size:11px;font-weight:bold;margin:8px;color:#ffd700}
+
+.page{display:none}.page.active{display:block}
+
+.section{
+  background:rgba(0,0,0,.6);border:1px solid #ffd700;
+  box-shadow:0 0 15px rgba(255,215,0,.7);
+  padding:16px;border-radius:16px;margin-top:10px
+}
+input,select{
+  width:100%;padding:12px;border-radius:10px;border:none;margin-bottom:10px;
+  background:#020617;color:#ffd700;border:1px solid #ffd700
+}
+.btn{
+  display:block;text-align:center;padding:12px;border-radius:12px;font-weight:bold;
+  text-decoration:none;margin-top:5px;background:linear-gradient(90deg,#ffd700,#ffb700);
+  color:#000;box-shadow:0 0 15px rgba(255,215,0,.9)
+}
+.back{background:#fff;box-shadow:none}
+
+footer{
+  position:fixed;bottom:0;left:0;right:0;background:#020617;border-top:1px solid #ffd700;
+  display:flex;justify-content:space-around;padding:10px 0;color:#ffd700;
+  box-shadow:0 0 15px rgba(255,215,0,.7)
+}
+footer div{cursor:pointer}
+
+.order-item{
+  background:#020617;border:1px solid #ffd700;
+  box-shadow:0 0 10px rgba(255,215,0,.7);
+  padding:10px;border-radius:10px;margin-bottom:8px
+}
+.order-item button{margin-top:5px;background:red;color:#fff;border:none;padding:6px 10px;border-radius:6px}
+.logo{
+  margin:0;
+  font-size:32px;
+  letter-spacing:3px;
+  color:#000;                  /* HITAM */
+  -webkit-text-stroke:0;       /* tidak perlu stroke */
+  text-shadow:none;
+  font-weight:800;
+
+  /* animasi muncul SEKALI */
+  opacity:0;
+  transform:translateY(-15px);
+  animation: muncul 0.8s ease-out forwards;
+}
+
+@keyframes muncul{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+select, input, button {
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h2 class="logo">SELAMAT DATANG DI BOPAU STORE</h2>
+</header>
+
+<!-- HOME -->
+<div id="home" class="container page active">
+<h3>TOP UP GAME</h3>
+<div class="grid">
+<div class="card" onclick="openPage('ml')" style="background-image:url('ml.jpeg')"><p>MOBILE LEGENDS</p></div>
+<div class="card" onclick="openPage('ff')" style="background-image:url('ff.jpeg')"><p>FREE FIRE</p></div>
+<div class="card" onclick="openPage('pubg')" style="background-image:url('pubg.jpeg')"><p>PUBG</p></div>
+<div class="card" onclick="openPage('blood')" style="background-image:url('blood.jpeg')"><p>BLOODSTRIKE</p></div>
+<div class="card" onclick="openPage('codm')" style="background-image:url('codm.jpeg')"><p>CALL OF DUTY</p></div>
+<div class="card" onclick="openPage('mcg')" style="background-image:url('mcg.jpeg')"><p>MAGIC CHESS</p></div>
+<div class="card" onclick="openPage('genshin')" style="background-image:url('genshin.jpeg')"><p>GENSHIN</p></div>
+<div class="card" onclick="openPage('fcmobile')" style="background-image:url('fcmobile.jpeg')">
+  <p>FC MOBILE</p>
+</div>
+<div class="card" onclick="openPage('valorant')" style="background-image:url('valorant.jpeg')">
+  <p>VALORANT</p>
+</div>
+</div>
+
+<h3 style="margin-top:20px">TOP UP E-WALLET / BANK</h3>
+<div class="grid">
+<div class="card" onclick="openPage('dana')" style="background-image:url('dana.jpeg')"><p>DANA</p></div>
+<div class="card" onclick="openPage('ovo')" style="background-image:url('ovo.jpeg')"><p>OVO</p></div>
+<div class="card" onclick="openPage('gopay')" style="background-image:url('gopay.jpeg')"><p>GOPAY</p></div>
+<div class="card" onclick="openPage('shopee')" style="background-image:url('shopee.jpeg')"><p>SHOPEEPAY</p></div>
+<div class="card" onclick="openPage('seabank')" style="background-image:url('seabank.jpeg')"><p>SEABANK</p></div>
+<div class="card" onclick="openPage('jago')" style="background-image:url('jago.jpeg')"><p>BANK JAGO</p></div>
+<div class="card" onclick="openPage('bri')" style="background-image:url('bri.jpeg')"><p>BRI</p></div>
+<div class="card" onclick="openPage('bca')" style="background-image:url('bca.jpeg')"><p>BCA</p></div>
+<div class="card" onclick="openPage('neobank')" style="background-image:url('neobank.jpeg')">
+  <p>NEOBANK</p>
+</div>
+
+</div> <!-- TUTUP GRID BANK -->
+<h3>TOP UP PULSA & KUOTA</h3>
+
+<div class="grid">
+  <div class="card" onclick="openPage('pulsa')" style="background-image:url('pulsa.jpeg')">
+    <p>PULSA</p>
+  </div>
+
+  <div class="card" onclick="openPage('kuota')" style="background-image:url('kuota.jpeg')">
+    <p>KUOTA</p>
+  </div>
+
+  <div class="card" onclick="openPage('token')" style="background-image:url('token.jpeg')">
+    <p>TOKEN LISTRIK</p>
+  </div>
+</div>
+
+</div>
+</div>
+
+<div id="profile" class="container page">
+  <a class="btn back" onclick="goHome()">← KEMBALI</a>
+
+  <div class="section">
+    <h3>BOPAU STORE</h3>
+    <ul>
+      <li>Layanan top up game, e-wallet, pulsa, kuota, dan token listrik.</li>
+      <li>Mengutamakan kecepatan, keamanan, dan harga terjangkau.</li>
+      <li>Pemesanan dilakukan secara online melalui WhatsApp.</li>
+      <li>Proses transaksi mudah, transparan, dan terpercaya.</li>
+      <li>Memberikan pelayanan terbaik dengan respon cepat.</li>
+      <li>Menjamin transaksi yang aman dan nyaman bagi pelanggan.</li>
+    </ul>
+  </div>
+
+<div class="section">
+<h3>KEBIJAKAN TOKO</h3>
+<ul>
+<li>Semua transaksi diproses setelah pembayaran dikonfirmasi.</li>
+<li>Pastikan ID, nomor, dan data tujuan sudah benar sebelum melakukan order.</li>
+<li>Kesalahan input data oleh pembeli bukan tanggung jawab BOPAU STORE.</li>
+<li>Jam operasional mengikuti ketersediaan admin.</li>
+<li>Harga dapat berubah sewaktu-waktu tanpa pemberitahuan.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3>SYARAT & KETENTUAN</h3>
+<ul>
+<li>Dengan melakukan order, pembeli dianggap setuju dengan kebijakan toko.</li>
+<li>Top up bersifat <b>non-refundable</b> (tidak dapat dibatalkan).</li>
+<li>Keterlambatan dapat terjadi jika ada gangguan sistem dari pihak game/penyedia.</li>
+<li>BOPAU STORE tidak bekerja sama dengan pihak tidak resmi di luar kontak kami.</li>
+<li>Segala bentuk penipuan di luar nomor resmi bukan tanggung jawab kami.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3>KONTAK KAMI</h3>
+<p>
+👤 <b>Owner:</b> Zack Mudzakkir<br>
+📲 <b>WhatsApp:</b> 0813-2445-7090<br>
+🕒 <b>Layanan:</b> Online (Fast Response)
+</p>
+</div>
+
+</div>
+
+
+<!-- ================= GAME PAGES ================= -->
+
+<!-- MOBILE LEGENDS -->
+<div id="ml" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a>
+<div class="section">
+<h3>MOBILE LEGENDS</h3>
+<input id="mlid" placeholder="User ID (ID(Server))">
+<select id="mlitem">
+<option>5 Diamonds - Rp1.150</option><option>5 Diamonds - Rp1.500</option>
+<option>10 Diamonds - Rp3.000</option><option>12 Diamonds - Rp3.500</option>
+<option>14 Diamonds - Rp4.100</option><option>15 Diamonds - Rp4.500</option>
+<option>17 Diamonds - Rp4.835</option><option>18 Diamonds - Rp5.100</option>
+<option>19 Diamonds - Rp5.500</option><option>20 Diamonds - Rp6.000</option>
+<option>23 Diamonds - Rp6.850</option><option>28 Diamonds - Rp8.000</option>
+<option>30 Diamonds - Rp8.590</option><option>33 Diamonds - Rp9.350</option>
+<option>36 Diamonds - Rp10.170</option><option>54 Diamonds - Rp15.000</option>
+<option>70 Diamonds - Rp20.000</option><option>88 Diamonds - Rp24.500</option>
+<option>Weekly Diamond Pass - Rp28.800</option>
+<option>102 Diamonds - Rp29.500</option><option>128 Diamonds - Rp35.000</option>
+<option>141 Diamonds - Rp40.000</option><option>184 Diamonds - Rp49.500</option>
+<option>370 Diamonds - Rp99.000</option><option>568 Diamonds - Rp149.000</option>
+<option>755 Diamonds - Rp198.600</option><option>2046 Diamonds - Rp499.000</option>
+<option>4020 Diamonds - Rp999.000</option>
+</select>
+<select id="mlpay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Mobile Legends','mlid','mlitem','mlpay')">ORDER VIA WHATSAPP</a>
+</div></div>
+
+<!-- FREE FIRE -->
+<div id="ff" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a>
+<div class="section">
+<h3>FREE FIRE</h3>
+<input id="ffid" placeholder="Player ID">
+<select id="ffitem">
+<option>5 Diamonds - Rp1.000</option><option>12 Diamonds - Rp2.000</option>
+<option>15 Diamonds - Rp3.000</option><option>25 Diamonds - Rp4.000</option>
+<option>30 Diamonds - Rp5.000</option><option>75 Diamonds - Rp10.000</option>
+<option>100 Diamonds - Rp14.000</option><option>140 Diamonds - Rp18.000</option>
+<option>170 Diamonds - Rp25.000</option><option>210 Diamonds - Rp28.500</option>
+<option>350 Diamonds - Rp48.000</option><option>740 Diamonds - Rp97.000</option>
+<option>1200 Diamonds - Rp150.000</option><option>1580 Diamonds - Rp196.000</option>
+<option>2000 Diamonds - Rp248.200</option><option>4000 Diamonds - Rp495.000</option>
+<option>7650 Diamonds - Rp975.000</option>
+</select>
+<select id="ffpay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Free Fire','ffid','ffitem','ffpay')">ORDER VIA WHATSAPP</a>
+</div></div>
+
+<!-- PUBG -->
+<div id="pubg" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a>
+<div class="section">
+<h3>PUBG MOBILE</h3>
+<input id="pubgid" placeholder="Player ID">
+<select id="pubgitem">
+<option>40 UC - Rp15.000</option><option>60 UC - Rp16.000</option>
+<option>100 UC - Rp30.000</option><option>180 UC - Rp45.000</option>
+<option>240 UC - Rp60.000</option><option>325 UC - Rp74.000</option>
+<option>385 UC - Rp92.000</option><option>445 UC - Rp104.000</option>
+<option>505 UC - Rp118.500</option><option>660 UC - Rp146.500</option>
+<option>720 UC - Rp161.000</option><option>900 UC - Rp205.000</option>
+<option>1105 UC - Rp250.000</option><option>1320 UC - Rp292.000</option>
+<option>1800 UC - Rp362.000</option><option>2460 UC - Rp510.000</option>
+<option>3120 UC - Rp653.000</option><option>3850 UC - Rp725.436</option>
+<option>8100 UC - Rp1.451.043</option>
+</select>
+<select id="pubgpay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('PUBG Mobile','pubgid','pubgitem','pubgpay')">ORDER VIA WHATSAPP</a>
+</div></div>
+
+<!-- BLOODSTRIKE -->
+<div id="blood" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a>
+<div class="section">
+<h3>BLOODSTRIKE</h3>
+<input id="bloodid" placeholder="Player ID">
+<select id="blooditem">
+<option>100 Gold - Rp12.510</option><option>300 Gold - Rp38.000</option>
+<option>500 Gold - Rp60.000</option><option>1000 Gold - Rp121.000</option>
+<option>2000 Gold - Rp240.000</option><option>5000 Gold - Rp583.000</option>
+</select>
+<select id="bloodpay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Bloodstrike','bloodid','blooditem','bloodpay')">ORDER VIA WHATSAPP</a>
+</div></div>
+
+<!-- CODM -->
+<div id="codm" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a>
+<div class="section">
+<h3>CALL OF DUTY MOBILE</h3>
+<input id="codmid" placeholder="Player ID">
+<select id="codmitem">
+<option>63 CP - Rp10.000</option><option>106 CP - Rp19.000</option>
+<option>128 CP - Rp20.000</option><option>165 CP - Rp29.000</option>
+<option>264 CP - Rp43.000</option><option>320 CP - Rp48.000</option>
+<option>321 CP - Rp53.000</option><option>581 CP - Rp95.000</option>
+<option>640 CP - Rp96.000</option><option>693 CP - Rp103.500</option>
+<option>800 CP - Rp117.000</option><option>859 CP - Rp128.000</option>
+<option>1024 CP - Rp150.000</option><option>1288 CP - Rp189.000</option>
+<option>2750 CP - Rp386.000</option><option>5280 CP - Rp725.000</option>
+</select>
+<select id="codmpay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Call of Duty Mobile','codmid','codmitem','codmpay')">ORDER VIA WHATSAPP</a>
+</div></div>
+
+<!-- MAGIC CHESS -->
+<div id="mcg" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a>
+<div class="section">
+<h3>MAGIC CHESS GO GO</h3>
+<input id="mcgid" placeholder="User ID">
+<select id="mcgitem">
+<option>28 Diamond - Rp8.000</option><option>44 Diamond - Rp12.000</option>
+<option>59 Diamond - Rp16.000</option><option>85 Diamond - Rp22.510</option>
+<option>170 Diamond - Rp42.100</option><option>240 Diamond - Rp60.000</option>
+<option>408 Diamond - Rp98.500</option><option>568 Diamond - Rp135.000</option>
+<option>875 Diamond - Rp208.000</option><option>2010 Diamond - Rp466.000</option>
+</select>
+<select id="mcgpay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Magic Chess Go Go','mcgid','mcgitem','mcgpay')">ORDER VIA WHATSAPP</a>
+</div></div>
+
+<!-- GENSHIN -->
+<div id="genshin" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a>
+<div class="section">
+<h3>GENSHIN IMPACT</h3>
+<input id="genshinid" placeholder="UID">
+<select id="genshinitem">
+<option>60 Genesis - Rp12.000</option><option>330 Genesis - Rp57.000</option>
+<option>1090 Genesis - Rp174.000</option><option>2240 Genesis - Rp361.000</option>
+<option>3880 Genesis - Rp585.000</option><option>8080 Genesis - Rp1.130.000</option>
+<option>Blessing of the Welkin Moon - Rp58.000</option>
+</select>
+<select id="genshinpay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Genshin Impact','genshinid','genshinitem','genshinpay')">ORDER VIA WHATSAPP</a>
+</div></div>
+
+<div id="fcmobile" class="container page">
+<a class="btn back" onclick="goHome()">← KEMBALI</a>
+<div class="section">
+<h3>FC MOBILE</h3>
+<input id="fcmobileid" placeholder="Player ID">
+<select id="fcmobileitem">
+  <option>40 + 8 FC - Rp7.000</option>
+  <option>100 + 20 FC - Rp17.000</option>
+  <option>520 + 104 FC - Rp80.000</option>
+  <option>1070 + 214 FC - Rp158.000</option>
+  <option>2200 + 440 FC - Rp325.000</option>
+  <option>5750 + 1150 FC - Rp783.000</option>
+  <option>12000 + 2400 FC - Rp1.560.000</option>
+</select>
+<select id="fcmobilepay">
+<option value="">Metode Bayar</option>
+<option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option>
+</select>
+<a class="btn" onclick="order('FC Mobile','fcmobileid','fcmobileitem','fcmobilepay')">
+ORDER VIA WHATSAPP
+</a>
+</div>
+</div>
+
+<div id="valorant" class="container page">
+<a class="btn back" onclick="goHome()">← KEMBALI</a>
+<div class="section">
+<h3>VALORANT</h3>
+<input id="valorantid" placeholder="Riot ID (Name#Tag)">
+<select id="valorantitem">
+  <option>475 Point - Rp54.000</option>
+  <option>950 Point - Rp108.000</option>
+  <option>1000 Point - Rp110.000</option>
+  <option>1475 Point - Rp163.000</option>
+  <option>2050 Point - Rp217.000</option>
+  <option>2525 Point - Rp270.000</option>
+  <option>3050 Point - Rp323.000</option>
+  <option>4650 Point - Rp481.000</option>
+  <option>8990 Point - Rp910.000</option>
+</select>
+<select id="valorantpay">
+<option value="">Metode Bayar</option>
+<option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option>
+</select>
+<a class="btn" onclick="order('Valorant','valorantid','valorantitem','valorantpay')">
+ORDER VIA WHATSAPP
+</a>
+</div>
+</div>
+
+<!-- ================= E-WALLET & BANK ================= -->
+
+<script>
+const ewalletNominal = `
+<option value="">Pilih Nominal</option>
+<option>Rp12.000</option>
+<option>Rp22.000</option>
+<option>Rp27.000</option>
+<option>Rp32.000</option>
+<option>Rp42.000</option>
+<option>Rp52.000</option>
+<option>Rp102.000</option>`;
+</script>
+
+<div id="dana" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a><div class="section">
+<h3>TOP UP DANA</h3><input id="danaid" placeholder="No. DANA"><select id="danaitem"></select>
+<select id="danapay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Top Up DANA','danaid','danaitem','danapay')">ORDER VIA WHATSAPP</a></div></div>
+
+<div id="ovo" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a><div class="section">
+<h3>TOP UP OVO</h3><input id="ovoid" placeholder="No. OVO"><select id="ovoitem"></select>
+<select id="ovopay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Top Up OVO','ovoid','ovoitem','ovopay')">ORDER VIA WHATSAPP</a></div></div>
+
+<div id="gopay" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a><div class="section">
+<h3>TOP UP GOPAY</h3><input id="gopayid" placeholder="No. GOPAY"><select id="gopayitem"></select>
+<select id="gopaypay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Top Up GOPAY','gopayid','gopayitem','gopaypay')">ORDER VIA WHATSAPP</a></div></div>
+
+<div id="shopee" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a><div class="section">
+<h3>TOP UP SHOPEEPAY</h3><input id="shopeeid" placeholder="No. ShopeePay"><select id="shopeeitem"></select>
+<select id="shopeepay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Top Up ShopeePay','shopeeid','shopeeitem','shopeepay')">ORDER VIA WHATSAPP</a></div></div>
+
+<div id="seabank" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a><div class="section">
+<h3>TOP UP SEABANK</h3><input id="seabankid" placeholder="No. Rekening SeaBank"><select id="seabankitem"></select>
+<select id="seabankpay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Top Up SeaBank','seabankid','seabankitem','seabankpay')">ORDER VIA WHATSAPP</a></div></div>
+
+<div id="jago" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a><div class="section">
+<h3>TOP UP BANK JAGO</h3><input id="jagoid" placeholder="No. Rekening Jago"><select id="jagoitem"></select>
+<select id="jagopay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Top Up Bank Jago','jagoid','jagoitem','jagopay')">ORDER VIA WHATSAPP</a></div></div>
+
+<div id="bri" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a><div class="section">
+<h3>TOP UP BRI</h3><input id="briid" placeholder="No. Rekening BRI"><select id="briitem"></select>
+<select id="bripay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Top Up BRI','briid','briitem','bripay')">ORDER VIA WHATSAPP</a></div></div>
+
+<div id="bca" class="container page"><a class="btn back" onclick="goHome()">← KEMBALI</a><div class="section">
+<h3>TOP UP BCA</h3><input id="bcaid" placeholder="No. Rekening BCA"><select id="bcaitem"></select>
+<select id="bcapay"><option value="">Metode Bayar</option><option>QRIS</option><option>DANA</option><option>OVO</option><option>GOPAY</option><option>SHOPEEPAY</option></select>
+<a class="btn" onclick="order('Top Up BCA','bcaid','bcaitem','bcapay')">ORDER VIA WHATSAPP</a></div></div>
+
+<div id="neobank" class="container page">
+<a class="btn back" onclick="goHome()">← KEMBALI</a>
+<div class="section">
+<h3>TOP UP NEOBANK</h3>
+<input id="neobankid" placeholder="No. Rekening NeoBank">
+<select id="neobankitem"></select>
+<select id="neobankpay">
+<option value="">Metode Bayar</option>
+<option>QRIS</option>
+<option>DANA</option>
+<option>OVO</option>
+<option>GOPAY</option>
+<option>SHOPEEPAY</option>
+</select>
+<a class="btn" onclick="order('Top Up NeoBank','neobankid','neobankitem','neobankpay')">
+ORDER VIA WHATSAPP
+</a>
+</div>
+</div>
+
+<!-- ===== HALAMAN KUOTA ===== -->
+<div id="kuota" class="page">
+
+<a class="btn back" onclick="goHome()">← KEMBALI</a>
+
+<div class="section">
+<h3>TOP UP KUOTA</h3>
+
+<div id="kuotaop" style="margin-top:6px;color:#00ffae;font-size:14px"></div>
+<input id="kuotanomor" placeholder="Nomor HP" oninput="detectKuotaOp()">
+
+<select id="kuotaoperator" onchange="setKuota()">
+  <option value="">Pilih Operator</option>
+  <option value="telkomsel">TELKOMSEL</option>
+  <option value="xl">XL</option>
+  <option value="tri">TRI</option>
+  <option value="indosat">INDOSAT</option>
+  <option value="smartfren">SMARTFREN</option>
+  <option value="byu">BY.U</option>
+  <option value="axis">AXIS</option>
+</select>
+
+<select id="kuotaitem">
+  <option value="">Pilih Paket</option>
+</select>
+
+<select id="kuotapay">
+  <option value="">Metode Bayar</option>
+  <option>QRIS</option>
+  <option>DANA</option>
+  <option>OVO</option>
+  <option>GOPAY</option>
+  <option>SHOPEEPAY</option>
+</select>
+
+<a class="btn" onclick="order('Kuota Internet','kuotanomor','kuotaitem','kuotapay')">
+ORDER VIA WHATSAPP
+</a>
+
+</div>
+</div>
+
+<!-- ===== HALAMAN PULSA ===== -->
+<div id="pulsa" class="page">
+
+<a class="btn back" onclick="goHome()">← KEMBALI</a>
+
+<div class="section">
+<h3>TOP UP PULSA (SEMUA OPERATOR)</h3>
+
+<div id="pulsaop" style="margin-top:6px;color:#00ffae;font-size:14px"></div>
+<input id="pulsanomor" placeholder="Nomor HP" oninput="detectPulsaOp()">
+
+<select id="pulsaitem">
+  <option value="">Pilih Nominal Pulsa</option>
+  <option>Rp6.500</option>
+  <option>Rp11.500</option>
+  <option>Rp16.500</option>
+  <option>Rp21.500</option>
+  <option>Rp26.500</option>
+  <option>Rp31.500</option>
+  <option>Rp36.500</option>
+  <option>Rp41.000</option>
+  <option>Rp46.000</option>
+  <option>Rp51.500</option>
+  <option>Rp102.000</option>
+</select>
+
+<select id="pulsapay">
+  <option value="">Metode Bayar</option>
+  <option>QRIS</option>
+  <option>DANA</option>
+  <option>OVO</option>
+  <option>GOPAY</option>
+  <option>SHOPEEPAY</option>
+</select>
+
+<a class="btn" onclick="order('Pulsa','pulsanomor','pulsaitem','pulsapay')">
+ORDER VIA WHATSAPP
+</a>
+
+</div>
+</div>
+
+<!-- ===== HALAMAN TOKEN LISTRIK ===== -->
+<div id="token" class="container page">
+<a class="btn back" onclick="goHome()">← KEMBALI</a>
+
+<div class="section">
+<h3>TOP UP TOKEN LISTRIK</h3>
+
+<input id="tokenid" placeholder="ID Pelanggan / No Meter">
+
+<select id="tokenitem">
+  <option value="">Pilih Nominal Token</option>
+  <option>PLN 5.000 - Rp7.500</option>
+  <option>PLN 10.000 - Rp12.500</option>
+  <option>PLN 15.000 - Rp17.500</option>
+  <option>PLN 20.000 - Rp22.000</option>
+  <option>PLN 25.000 - Rp27.500</option>
+  <option>PLN 50.000 - Rp52.000</option>
+  <option>PLN 100.000 - Rp102.000</option>
+  <option>PLN 200.000 - Rp202.000</option>
+  <option>PLN 500.000 - Rp503.000</option>
+  <option>PLN 1.000.000 - Rp1.005.000</option>
+</select>
+
+<select id="tokenpay">
+  <option value="">Metode Pembayaran</option>
+  <option>DANA</option>
+  <option>OVO</option>
+  <option>GOPAY</option>
+  <option>SHOPEEPAY</option>
+  <option>SEABANK</option>
+  <option>JAGO</option>
+  <option>BRI</option>
+  <option>BCA</option>
+  <option>NEOBANK</option>
+</select>
+
+<a class="btn" onclick="order('Token Listrik','tokenid','tokenitem','tokenpay')">
+ORDER VIA WHATSAPP
+</a>
+
+</div>
+</div>
+
+<footer>
+  <div onclick="goHome()">HOME</div>
+  <div onclick="openPage('profile')">PROFILE</div>
+</footer>
+
+<script>
+const wa="https://wa.me/6281324457090?text="; // 
+
+function openPage(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+function goHome(){openPage('home');}
+
+function order(title,idInput,idItem,idPay){
+let uid=document.getElementById(idInput).value;
+let item=document.getElementById(idItem).value;
+let pay=document.getElementById(idPay).value;
+if(uid===""){alert("Isi ID / Nomor dulu!");return;}
+if(item===""){alert("Pilih nominal / item dulu!");return;}
+if(pay===""){alert("Pilih metode bayar dulu!");return;}
+}
+
+function setKuota(){
+let op=document.getElementById("kuotaoperator").value;
+let paket=document.getElementById("kuotaitem");
+
+let data={
+
+telkomsel:[
+"1 GB 3 Day - Rp10.000","3 GB 5 Day - Rp14.000","5 GB 3 Day - Rp24.500","10 GB 3 Day - Rp44.000",
+"500 MB 15 Day - Rp8.000","1 GB 7 Day - Rp12.000","2 GB 7 Day - Rp17.000","2 GB 14 Day - Rp22.500",
+"5 GB 7 Day - Rp24.000","10 GB 7 Day - Rp49.000",
+"1 GB 30 Day - Rp13.000","3 GB 30 Day - Rp25.000","4 GB 30 Day - Rp30.000",
+"5 GB 30 Day - Rp33.000","8 GB 30 Day - Rp40.000","9 GB 30 Day - Rp48.000"
+],
+
+xl:[
+"Mini 1 GB 7 Day - Rp10.500","Mini 1.5 GB 7 Day - Rp12.500","Mini 2.5 GB 7 Day - Rp16.000","Mini 4 GB 7 Day - Rp21.000",
+"500 MB 7 Day - Rp6.000","1.5 GB 7 Day - Rp10.000","2 GB 7 Day - Rp19.000","3 GB 7 Day - Rp26.000",
+"500 MB + 1.5 GB 30 Day - Rp29.000","2 GB + 4 GB 30 Day - Rp48.000",
+"3 GB + 9 GB 30 Day - Rp70.000","5 GB + 15 GB 30 Day - Rp99.000"
+],
+
+tri:[
+"1.5 GB 1 Day - Rp6.500","1.5 GB 7 Day - Rp10.000","5 GB 3 Day - Rp15.100","5 GB 7 Day - Rp20.100",
+"3 GB 30 Day - Rp23.000","7 GB 30 Day - Rp32.000","14 GB 30 Day - Rp62.000","42 GB 30 Day - Rp97.000"
+],
+
+indosat:[
+"1 GB 2 Day - Rp7.000","1 GB 7 Day - Rp7.500","1 GB 15 Day - Rp11.000","2 GB 3 Day - Rp15.000",
+"4 GB 30 Day - Rp32.000","6 GB 30 Day - Rp38.000","10 GB 30 Day - Rp45.000","30 GB 30 Day - Rp98.000"
+],
+
+smartfren:[
+"6 GB + Unlimited - Rp41.500","10 GB + Unlimited - Rp57.500","18 GB + Unlimited - Rp80.000","30 GB + Unlimited - Rp82.000",
+"2.5 GB 3 Day - Rp10.000","4 GB 7 Day - Rp16.500","18 GB 30 Day - Rp76.000",
+"60 GB 30 Day - Rp127.000","90 GB 30 Day - Rp141.000"
+],
+
+byu:[
+"2 GB 1 Day - Rp10.000","3 GB 7 Day - Rp13.000","4 GB 7 Day - Rp17.500","11 GB 14 Day - Rp27.000",
+"2 GB 30 Day - Rp37.000","6 GB 30 Day - Rp39.000","12 GB 30 Day - Rp49.000","42 GB 30 Day - Rp87.000"
+],
+
+axis:[
+"Bronet Mini 1GB 1 Day - Rp6.500","Bronet Mini 3GB 1 Day - Rp7.500","Bronet Mini 2.5GB 1 Day - Rp9.000",
+"Bronet Mini 1.5GB 3 Day - Rp10.000","Bronet Mini 2.5GB 3 Day - Rp12.000",
+"Bronet Mini 4.5GB 3 Day - Rp12.500","Bronet Mini 7GB 3 Day - Rp14.000",
+"Bronet Mini 1.5GB 7 Day - Rp14.000","Bronet Mini 2GB + Local 7 Day - Rp17.000",
+"Bronet Mini 7GB 7 Day - Rp25.000","Bronet Mini 15GB 7 Day - Rp47.000",
+"Data Bronet 1GB 28 Day - Rp10.000","Data Bronet 2GB 28 Day - Rp16.000",
+"Data Bronet 3GB 28 Day - Rp25.000","Data Bronet 5GB 28 Day - Rp31.000",
+"Data Bronet 8GB 28 Day - Rp45.000"
+]
+
+};
+
+paket.innerHTML = `<option value="">Pilih Paket</option>`;
+(data[op]||[]).forEach(p=>{
+let o=document.createElement("option");
+o.textContent=p;
+paket.appendChild(o);
+});
+}
+
+function getOperator(no){
+if(no.startsWith("0811")||no.startsWith("0812")||no.startsWith("0813")||no.startsWith("0821")||no.startsWith("0822")||no.startsWith("0852")||no.startsWith("0853")||no.startsWith("0823")){
+return "TELKOMSEL";
+}
+if(no.startsWith("0817")||no.startsWith("0818")||no.startsWith("0819")||no.startsWith("0859")||no.startsWith("0877")||no.startsWith("0878")){
+return "XL / AXIS";
+}
+if(no.startsWith("0895")||no.startsWith("0896")||no.startsWith("0897")||no.startsWith("0898")||no.startsWith("0899")){
+return "TRI";
+}
+if(no.startsWith("0814")||no.startsWith("0815")||no.startsWith("0816")||no.startsWith("0855")||no.startsWith("0856")||no.startsWith("0857")||no.startsWith("0858")){
+return "INDOSAT";
+}
+if(no.startsWith("0881")||no.startsWith("0882")||no.startsWith("0883")||no.startsWith("0884")||no.startsWith("0885")||no.startsWith("0886")||no.startsWith("0887")||no.startsWith("0888")||no.startsWith("0889")){
+return "SMARTFREN";
+}
+if(no.startsWith("0851")){
+return "BY.U";
+}
+return "";
+}
+
+function detectPulsaOp(){
+let no=document.getElementById("pulsanomor").value;
+let op=getOperator(no);
+document.getElementById("pulsaop").innerText = op ? "Operator: "+op : "";
+}
+
+function detectKuotaOp(){
+let no=document.getElementById("kuotanomor").value;
+let op=getOperator(no);
+document.getElementById("kuotaop").innerText = op ? "Operator: "+op : "";
+}
+
+</script>
+
+</script>
+
+    <!-- FOOTER -->
+    <footer>
+      <div onclick="goHome()">HOME</div>
+      <div onclick="openPage('profile')">PROFILE</div>
+    </footer>
+
+    <!-- SCRIPT ISI NOMINAL -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      ["danaitem","ovoitem","gopayitem","shopeeitem","seabankitem","jagoitem","briitem","bcaitem","neobankitem"]
+      .forEach(id => document.getElementById(id).innerHTML = ewalletNominal);
+    });
+    </script>
+
+    <script>
+    function order(title,idInput,idItem,idPay){
+      const uid = document.getElementById(idInput).value.trim();
+      const item = document.getElementById(idItem).value;
+      const pay = document.getElementById(idPay).value;
+
+      if(!uid){ alert("Isi ID / Nomor dulu!"); return; }
+      if(!item){ alert("Pilih nominal dulu!"); return; }
+      if(!pay){ alert("Pilih metode bayar dulu!"); return; }
+
+      const text =
+`Halo Admin BOPAU STORE 👋
+
+Saya mau order:
+ Produk : ${title}
+ ID / Nomor : ${uid}
+ Nominal : ${item}
+ Pembayaran : ${pay}
+
+Terima kasih `;
+
+      window.open(
+        "https://wa.me/6281324457090?text=" + encodeURIComponent(text),
+        "_blank"
+      );
+    }
+    </script>
+
+</body>
+</html>
